@@ -14,9 +14,9 @@ I used this algorithm for shuffling the array of tiles as it is a reliable and s
 
 # React Resources
 
-https://www.w3schools.com/REACT/DEFAULT.ASP
-https://reactjs.org/docs/hello-world.html
-https://reactjs.org/tutorial/tutorial.html
+https://www.w3schools.com/REACT/DEFAULT.ASP<br />
+https://reactjs.org/docs/hello-world.html<br />
+https://reactjs.org/tutorial/tutorial.html<br />
 
 I had to use these resources to see how react worked and what was possible with it. I also followed through with their course on tic-tac-toe to learn the basics of React and coding web games in react (Wasn't much help since it was more OOP than functional but it helped me understand react and rendering and etc.).
 
