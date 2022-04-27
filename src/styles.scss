@@ -30,14 +30,17 @@ body {
 .container-wrapper {
   margin-top: 40px;                                     //-- Apply a small margin to break away from the top of the page
   background-color: #141515;                          //-- Set the background color so it isn't white
-  height: 1080px;
+  height: 100%;
   width: 100%;
+}
+
+/* Simple padding style to assist with row padding in bootstrap */
+.padding-15 {
+  padding: 15px;
 }
 
 /* Base container for the stats */
 .stats-container {
-  max-width: 500px;                                     //-- Static height/width
-  max-height: 500px;                                    //-- ^
   height: 100%;                                         //-- Set the width to be 100% of max
   width: 100%;                                          //-- Set the height to be 100% of max
   float: right;                                         //-- Float the element to the right of the page
@@ -75,8 +78,6 @@ body {
   gap: 2rem;                                //-- Set a small gap between the tiles
   max-width: 500px;                         //-- Set the max width/height of the game container to 500 so it doesnt use the whole screen
   max-height: 500px;                        //-- ^
-  margin-right: 10px;                       //-- Slight margin for positioning
-  padding: 15px;                            //-- Slight padding for looks
   background-color: #141515;              //-- Set the background color so it isn't white
 }
 

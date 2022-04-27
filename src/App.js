@@ -113,26 +113,25 @@ export default function App() {
   const [tiles, setTiles] = useState(
     shuffle.bind(null, tileArray.concat(tileArray))
   );
-
-  /* Constant variables and functions for use in app function */
   const [flippedTiles, setflippedTiles] = useState([]); //-- Tiles that have been flipped over
-  const [clearedTiles, setClearedTiles] = useState({}); //-- Tiles that have been cleared from the board
-  const [disableTiles, setDisableTiles] = useState(false); //-- Tiles that are currenly disabled
   const [correct, setCorrect] = useState(0); //-- Number of correct moves
   const [incorrect, setIncorrect] = useState(0); //-- Number of incorrect moves
   const [showRestart, setshowRestart] = useState(false); //-- Show the restart button
+  const [disableTiles, setDisableTiles] = useState(false); //-- Tiles that are currenly disabled
   const [score, setScore] = useState(0); //-- Players score in the current session
   const [startTime, setStartTime] = useState(null); //-- Time the player clicked the first tile
   const [firstMove, setFirstMove] = useState(true); //-- Tells us if it is the players first move or not
+  const [clearedTiles, setClearedTiles] = useState({}); //-- Tiles that have been cleared from the board
+  const [scoreboard, setScoreboard] = useState([]); //-- Tells us the users scores and moves after each round
   const timeout = useRef(null); //-- Timeout for flipping the tiles
 
   //-- Disable the tiles function
-  const disTiles = () => {
+  const doDisableTiles = () => {
     //-- Set disable tiles to true so the tiles are disabled
     setDisableTiles(true);
   };
   //-- Enable tiles function
-  const enTiles = () => {
+  const doEnableTiles = () => {
     //-- Set disable tiles to false so the tiles are enabled
     setDisableTiles(false);
   };
@@ -144,9 +143,18 @@ export default function App() {
       //-- Show the restart button
       setshowRestart(true);
       //-- Calculate the users score
-      const newScore = Math.min(incorrect + correct, score);
+      //-- incorrect * 2 + correct / .5 -> Floor
+      const newScore = Math.floor((correct * 2 + incorrect) / 0.5);
       //-- Set the new score
       setScore(newScore);
+
+      setScoreboard(
+        scoreboard.concat({
+          score: newScore,
+          correctMoves: correct,
+          incorrectMoves: incorrect
+        })
+      );
     }
   };
 
@@ -167,7 +175,7 @@ export default function App() {
     //-- Get the two tiles from the flipped tiles array
     const [first, second] = flippedTiles;
     //-- Enable all tiles
-    enTiles();
+    doEnableTiles();
     //-- If the names of the two tiles match, then we have the same tile flipped
     if (tiles[first].name === tiles[second].name) {
       //-- Add the tile to the cleared tiles list
@@ -202,7 +210,7 @@ export default function App() {
       //-- Add the tile to the flipped tiles array
       setflippedTiles((prev) => [...prev, index]);
       //-- Disable all tiles
-      disTiles();
+      doDisableTiles();
     } else {
       //-- Otherwise we want to clear the timeout so out tile doesnt flip back over
       clearTimeout(timeout.current);
@@ -271,10 +279,24 @@ export default function App() {
   return (
     <div className="container-wrapper">
       <div className="row">
-        <div className="col-lg">
+        <div className="col-lg padding-15">
           <div className="stats-container">
             <div className="stats-card">
-              <h1>Gameplay Statistics</h1>
+              <h1>Scoreboard</h1>
+              {scoreboard.map((item) => {
+                return (
+                  <p>
+                    Score:{item.score}, Correct Moves:{item.correctMoves},
+                    Incorrect Moves:
+                    {item.incorrectMoves}.
+                  </p>
+                );
+              })}
+            </div>
+          </div>
+          <div className="stats-container">
+            <div className="stats-card">
+              <h1>Current Game Statistics</h1>
               <p>Score: {score}</p>
               <p>Correct Moves: {correct}</p>
               <p>Incorrect Moves: {incorrect}</p>
