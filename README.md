@@ -22,4 +22,4 @@ I had to use these resources to see how react worked and what was possible with 
 
 These are the only sources that I used for this interview.
 
-![Game Image](/repository/src/img/game_img.jpg?raw=true "Game Image")
+![Game Image](/src/img/game_img.jpg?raw=true "Game Image")
