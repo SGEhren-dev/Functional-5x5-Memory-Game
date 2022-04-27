@@ -21,3 +21,5 @@ https://reactjs.org/tutorial/tutorial.html<br />
 I had to use these resources to see how react worked and what was possible with it. I also followed through with their course on tic-tac-toe to learn the basics of React and coding web games in react (Wasn't much help since it was more OOP than functional but it helped me understand react and rendering and etc.).
 
 These are the only sources that I used for this interview.
+
+![Game Image](/repository/src/img/game_img.jpg?raw=true "Game Image")
