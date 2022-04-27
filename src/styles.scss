@@ -1,0 +1,127 @@
+/* Formatting for ol, ul elements */
+ol,
+ul {
+  padding: 30px;  // Apply a slight padding
+  background-color: #141515;                          //-- Set the background color so it isn't white
+}
+
+/* Formatting for h1 elements */
+h1 {
+  color: #E1901B;           //-- Make the h1 element stand out from other elements
+  font-weight: bold;          //-- Apply a bold weight
+  padding: 10px;              //-- Slight padding so the header isnt crowded
+}
+
+/* Formatting for p elements */
+p {
+  color: white;             //-- Set the base text color to white
+  padding: 10px;              //-- Apply a slight padding for looks
+  font-size: 18px;            //-- Make the font slightly bigger
+}
+
+/* Base formatting for the body element */
+body {
+  font: 14px "Century Gothic", Futura, sans-serif;      //-- Set the default text to century gothic
+  margin: 20px;                                         //-- Give it a slight margin
+  background-color: #141515;                          //-- Change the background color
+}
+
+/* Wrapper for bootstrap containers */
+.container-wrapper {
+  margin-top: 40px;                                     //-- Apply a small margin to break away from the top of the page
+  background-color: #141515;                          //-- Set the background color so it isn't white
+  height: 1080px;
+  width: 100%;
+}
+
+/* Base container for the stats */
+.stats-container {
+  max-width: 500px;                                     //-- Static height/width
+  max-height: 500px;                                    //-- ^
+  height: 100%;                                         //-- Set the width to be 100% of max
+  width: 100%;                                          //-- Set the height to be 100% of max
+  float: right;                                         //-- Float the element to the right of the page
+  background-color: #1F1F1F;                          //-- Background color to be slightly lighter than body
+  color: white;                                       //-- Font color is white
+}
+
+/* Base card for the gameplay stats */
+.stats-card {
+  width: 100%;                                          //-- Make its width 100% of the parent container
+  height: 100%;                                         //-- Make its height 100% of the parent container
+  padding: 15px;                                        //-- Set the padding to 15 for looks
+  border-radius: 5px;                                   //-- Round the corners
+  box-shadow: 2px 2px 4px 4px #272727;                //-- Apply a slight box shadow for depth
+  text-align: center;                                   //-- Align all text to the center of the element
+}
+
+/* Restart button CSS */
+.button-restart {
+  border-style: none;                                   //-- Give a materialistic look with no border
+  border-radius: 4px;                                   //-- Round the corners of the button
+  width: 75px;                                          //-- Set the width of the button statically
+  font-weight: bold;                                    //-- Set the font to be bold
+  text-align: center;                                   //-- Align text to the center of the button
+  padding: 8px;                                         //-- Apply a slight padding
+  background-color: #35FF3B;                          //-- Set the background to green so it catches the users attention
+}
+
+/* Base for the game container */
+.game-container {
+  display: grid;                            //-- Set the display to grid since we want the cards to be in a grid formation
+  grid-template-columns: repeat(5, 1fr);    //-- Repeat the columns 5 times and same with the rows
+  grid-template-rows: repeat(5, 1fr);       //-- ^
+  align-items: stretch;                     //-- Align the items to eachother
+  gap: 2rem;                                //-- Set a small gap between the tiles
+  max-width: 500px;                         //-- Set the max width/height of the game container to 500 so it doesnt use the whole screen
+  max-height: 500px;                        //-- ^
+  margin-right: 10px;                       //-- Slight margin for positioning
+  padding: 15px;                            //-- Slight padding for looks
+  background-color: #141515;              //-- Set the background color so it isn't white
+}
+
+/* Base CSS for any tile element */
+.tile {
+  width: 150px;                               //-- Specify the static width of the element
+  height: 150px;                              //-- Static height of the element
+  border-radius: 4px;                         //-- Apply a rounded edge to the element
+  border: 1px solid #E1901B;                //-- Add a yellow border to make it stand out
+  box-shadow: 2px 2px 4px 4px #272727;      //-- Small box shadow to the element for depth
+  transition: 0.3s;                           //-- Add a transition time to the element
+  transform-style: preserve-3d;               //-- Want child elements to be 3d
+  position: relative;                         //-- Allow for a fluid position
+  background-color: #1F1F1F;                //-- Set the background color slightly different from the body
+  cursor: pointer;                            //-- Make the cursor a pointer when hovering the tile element
+
+  /* CSS for an img inside the tile element */
+  img {                                       
+    width: 85%;                               //-- Width to be 85% of the parent container
+    height: 85%;                              //-- Height to be 85% of the parent container
+    margin-left: 10px;                        //-- Small margin for formatting
+    margin-top: 10px;                         //-- Small margin for formatting
+    border-radius: 4px;                       //-- Round the corners the same as the parent tile
+  }
+
+  /* CSS for the face of the tile */
+  .tile-face {
+    backface-visibility: hidden;              //-- We dont want to see the back face of the element
+    position: absolute;                       //-- Allow for a fluid UI
+    width: 150px;                             //-- Statically set the width and height
+    height: 150px;                            //-- ^
+
+    /* CSS for the back face of the tile */
+    &.tile-back-face {
+      transform: rotateY(180deg);             //-- Rotate the tile 180 degress along the Y axis
+    }
+  }
+
+  /* Flip the tile */
+  &.is-flipped {
+    transform: rotateY(180deg);
+  }
+  
+  /* CSS for an inactive tile */
+  &.is-inactive {
+    opacity: 0;                               //-- Set the opacity to 0 so we cant see it
+  }
+}
